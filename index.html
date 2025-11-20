@@ -1,105 +1,77 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>BALLU — Home</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ballu Dudh Wala - Home</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --neon-c1: #00ff99;
-    --neon-c2: #9b00ff;
-    --bg: #000;
-    --muted: #9ff;
+  body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    color: #fff;
+    overflow-x: hidden;
+    transition: background 1s ease;
   }
-  *{box-sizing:border-box}
-  html,body{height:100%; margin:0; background:var(--bg); color:var(--neon-c1); font-family:Inter,system-ui,Segoe UI,Roboto,Arial,monospace}
-  a{color:var(--neon-c1); text-decoration:none}
-  /* page fade */
-  .page{animation:fadeIn .7s ease both}
-  @keyframes fadeIn{from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none}}
 
-  header{display:flex; justify-content:space-between; align-items:center; padding:18px 28px; border-bottom:1px solid rgba(0,255,153,0.06)}
-  .brand{display:flex; align-items:center; gap:14px}
-  .logo{width:58px;height:58px;border-radius:12px; background:linear-gradient(135deg,var(--neon-c2),var(--neon-c1)); display:flex;align-items:center;justify-content:center;color:#000;font-weight:700; box-shadow:0 0 30px rgba(155,0,255,0.12)}
-  nav{display:flex; gap:14px; align-items:center}
-  nav a{padding:8px 12px;border-radius:8px; transition:all .25s; font-weight:600}
-  nav a:hover{transform:translateY(-4px); box-shadow:0 8px 30px rgba(0,255,153,0.06); color:var(--neon-c2); text-shadow:0 0 12px var(--neon-c2)}
-  /* hero */
-  .hero{padding:48px 20px; text-align:center}
-  .title{font-size:clamp(28px,6vw,48px); line-height:1.02; margin:6px 0; font-weight:800; letter-spacing:0.6px; background:linear-gradient(90deg,var(--neon-c1),var(--neon-c2)); -webkit-background-clip:text;color:transparent; animation:textGlow 1.8s ease-in-out infinite alternate;}
-  @keyframes textGlow{from{text-shadow:0 0 6px rgba(0,255,153,0.12)} to{text-shadow:0 0 30px rgba(155,0,255,0.15)}}
-  .subtitle{color:var(--muted); font-size:18px; margin-bottom:18px}
-  /* button */
-  .cta{display:inline-block;padding:12px 18px;border-radius:12px;background:linear-gradient(90deg,var(--neon-c2),var(--neon-c1)); color:#000;font-weight:700; box-shadow:0 8px 40px rgba(0,255,153,0.06); transform:translateY(0); transition:transform .18s, box-shadow .18s}
-  .cta:hover{transform:translateY(-6px); box-shadow:0 18px 60px rgba(155,0,255,0.12)}
-  /* floating neon bg */
-  .neon-bg{position:fixed; inset:0; pointer-events:none; mix-blend-mode:screen; opacity:0.06}
-  .blob{position:absolute; width:420px;height:420px;border-radius:50%;filter:blur(72px); transform:translate(-50%,-50%); animation:move 12s linear infinite alternate}
-  .b1{left:12%; top:18%; background:linear-gradient(90deg,var(--neon-c1),var(--neon-c2))}
-  .b2{left:86%; top:78%; width:520px;height:520px;background:linear-gradient(90deg,var(--neon-c2),var(--neon-c1)); animation-duration:14s}
-  @keyframes move{from{transform:translate(-50%,-50%) scale(.9)} to{transform:translate(-50%,-50%) scale(1.08)}}
+  /* Logo */
+  .logo { position: fixed; top: 20px; left: 20px; width: 60px; height: 60px; z-index:1000; }
+  .animated-logo { width:100%; height:100%; animation: spin 3s linear infinite, glowPulse 2s ease-in-out infinite; }
+  @keyframes spin { 0%{transform:rotate(0deg);}100%{transform:rotate(360deg);} }
+  @keyframes glowPulse { 0%,100%{filter:drop-shadow(0 0 5px #00ff99);}50%{filter:drop-shadow(0 0 20px #9b00ff);} }
 
-  /* image card */
-  .profile-card{display:inline-block;margin-top:24px;border-radius:16px; overflow:hidden;padding:6px;background:linear-gradient(90deg, rgba(155,0,255,0.16), rgba(0,255,153,0.12)); box-shadow:0 30px 80px rgba(0,0,0,0.6);}
-  .profile-card img{display:block;height:320px;width:auto; max-width:92vw; border-radius:10px; transition:transform .45s ease, box-shadow .45s ease}
-  .profile-card:hover img{transform:scale(1.03); box-shadow:0 30px 60px rgba(0,255,153,0.06)}
+  /* Header */
+  h1 { text-align:center; font-size:3em; margin-top:100px; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{text-shadow:0 0 10px #9b00ff;}50%{text-shadow:0 0 30px #00ff99;} }
 
-  footer{padding:24px;text-align:center;color:rgba(159,255,0,0.6); border-top:1px solid rgba(0,255,153,0.04)}
-  /* tiny page nav highlight */
-  .nav-active{outline:2px solid rgba(255,0,255,0.06); box-shadow:0 8px 40px rgba(0,255,153,0.03)}
-  /* small responsive */
-  @media (max-width:640px){ header{padding:12px} .logo{width:44px;height:44px} }
+  /* Nav Buttons */
+  .nav { text-align:center; margin-top:50px; }
+  .btn {
+    display:inline-block;
+    margin:10px;
+    padding:15px 30px;
+    border-radius:12px;
+    border:none;
+    background: linear-gradient(90deg,#9b00ff,#00ff99);
+    color:#000;
+    font-weight:700;
+    font-size:1em;
+    cursor:pointer;
+    transition: all 0.3s ease;
+  }
+  .btn:hover { transform:scale(1.1); box-shadow:0 12px 50px rgba(255,0,255,0.4); }
+
+  /* Music button */
+  #play-music { position:fixed; bottom:20px; right:20px; padding:10px 15px; border:none; border-radius:8px; background:linear-gradient(90deg,#9b00ff,#00ff99); color:#000; font-weight:700; cursor:pointer; }
 </style>
 </head>
-<body class="page">
+<body>
 
-<div class="neon-bg" aria-hidden="true">
-  <div class="blob b1"></div>
-  <div class="blob b2"></div>
+<div class="logo"><img src="logo.svg" alt="Logo" class="animated-logo"></div>
+
+<h1>Welcome to Ballu Dudh Wala Fan Page</h1>
+
+<div class="nav">
+  <a href="index.html"><button class="btn">Home</button></a>
+  <a href="gallery.html"><button class="btn">Gallery</button></a>
+  <a href="about.html"><button class="btn">About</button></a>
+  <a href="contact.html"><button class="btn">Contact</button></a>
 </div>
 
-<header>
-  <div class="brand">
-    <div class="logo">B</div>
-    <div>
-      <div style="font-weight:700">BALLU</div>
-      <div style="font-size:12px;color:rgba(160,255,200,0.6)">Neon Gallery</div>
-    </div>
-  </div>
-
-  <nav>
-    <a href="index.html" class="nav-active">Home</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
-
-<main class="hero">
-  <div class="title">SANTOSH KUMAR BHERA IS SO HOT</div>
-  <div class="subtitle">A neon playground for memes, vibes and lol moments — welcome to BALLU.</div>
-
-  <a class="cta" href="gallery.html">Open the Gallery</a>
-
-  <div class="profile-card" role="img" aria-label="Profile image">
-    <img src="0bf405e9-c7f2-4106-9940-b9102bfa60ad.png" alt="profile photo">
-  </div>
-</main>
-
-<footer>
-  Made with ❤️ — keep it fun & respectful. © <span id="y"></span>
-</footer>
+<audio id="bg-music" loop autoplay muted>
+  <source src="https://drive.google.com/uc?export=download&id=1UEj27ksMCKoeGVWvpmOj91Cln4ACZ5rd" type="audio/mpeg">
+</audio>
+<button id="play-music">🎵 Play Music</button>
 
 <script>
-  document.getElementById('y').textContent = new Date().getFullYear();
-  // small entrance animation for hero elements (stagger)
-  document.addEventListener('DOMContentLoaded', ()=> {
-    const hero = document.querySelector('.hero');
-    hero.style.opacity = 0;
-    setTimeout(()=> hero.style.transition = 'opacity .6s ease', 10);
-    setTimeout(()=> hero.style.opacity = 1, 40);
-  });
+const audio = document.getElementById('bg-music');
+const btn = document.getElementById('play-music');
+btn.addEventListener('click', () => {
+  if(audio.paused){ audio.play(); btn.textContent="🔊 Pause Music"; } 
+  else { audio.pause(); btn.textContent="🎵 Play Music"; }
+});
 </script>
+
 </body>
 </html>
-

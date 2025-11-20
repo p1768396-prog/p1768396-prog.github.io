@@ -1,56 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>BALLU — Gallery</title>
-    <style>
-        body {
-            margin: 0;
-            background-color: black;
-            color: #0aff9d;
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-        header {
-            padding: 25px;
-            font-size: 35px;
-            text-shadow: 0 0 10px #0aff9d;
-        }
-        nav a {
-            color: #0aff9d;
-            margin: 20px;
-            font-size: 22px;
-            text-decoration: none;
-        }
-        nav a:hover {
-            text-shadow: 0 0 10px #0aff9d;
-        }
-        .gallery img {
-            width: 300px;
-            margin: 20px;
-            border: 4px solid #ff00ff;
-            box-shadow: 0 0 20px #ff00ff;
-        }
-    </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Gallery – BALLU</title>
+<style>
+  body { background:#000; color:#0ff; font-family: 'Segoe UI', Roboto, monospace; margin:0; padding:0; text-align:center; }
+  nav { padding:18px 0; border-bottom:1px solid rgba(15,255,255,0.06); }
+  nav a { color:#0f0; margin:0 14px; text-decoration:none; font-size:18px; }
+  nav a:hover { color:#ff00ff; text-shadow:0 0 8px #ff00ff; }
+  .container { padding:28px 20px; }
+  h1 { font-size:42px; margin-top:20px; text-shadow:0 0 12px rgba(0,255,255,0.08); }
+  .grid { display:flex; flex-wrap:wrap; justify-content:center; gap:18px; margin-top:22px; }
+  .card { width:320px; max-width:90vw; }
+  .card img { width:100%; border:4px solid #0ff; border-radius:12px; box-shadow:0 0 30px rgba(0,255,255,0.12); }
+  .caption { color:#9ff; margin-top:8px; font-size:16px; }
+  @media (max-width:420px) {
+    .card { width:86%; }
+  }
+</style>
 </head>
 <body>
 
-<header>Gallery</header>
-
 <nav>
-    <a href="index.html">Home</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
+  <a href="index.html">HOME</a>
+  <a href="gallery.html">GALLERY</a>
+  <a href="about.html">ABOUT</a>
+  <a href="contact.html">CONTACT</a>
 </nav>
 
-<h2>Your Funny Photos 😭🔥</h2>
+<div class="container">
+  <h1>Funny Gallery 😂💀</h1>
 
-<div class="gallery">
-    <img src="0bf405e9-c7f2-4106-9940-b9102bfa60ad.png" alt="Funny Photo">
+  <div class="grid">
+    <!-- Old image (already on site) -->
+    <div class="card">
+      <img src="0bf405e9-c7f2-4106-9940-b9102bfa60ad.png" alt="Friend 1">
+      <div class="caption">Classic mood — Santosh energy</div>
+    </div>
+
+    <!-- New image you uploaded -->
+    <div class="card">
+      <img src="cd73f0b8-91e0-4747-a883-a3c8f6ce55d5.png" alt="Friend 2">
+      <div class="caption">New upload — vibe check ✔️</div>
+    </div>
+  </div>
+
+  <p style="margin-top:24px;color:#9ff">Upload more and I’ll add them here automatically.</p>
 </div>
-
-<p style="color:#ff00ff;">Upload more and I’ll add them here!</p>
 
 </body>
 </html>

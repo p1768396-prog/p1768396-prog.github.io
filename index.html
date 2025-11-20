@@ -14,41 +14,80 @@
   *{box-sizing:border-box}
   html,body{height:100%; margin:0; background:var(--bg); color:var(--neon-c1); font-family:Inter,system-ui,Segoe UI,Roboto,Arial,monospace}
   a{color:var(--neon-c1); text-decoration:none}
+  
+  /* page fade */
   .page{animation:fadeIn .7s ease both}
   @keyframes fadeIn{from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none}}
 
   header{display:flex; justify-content:space-between; align-items:center; padding:18px 28px; border-bottom:1px solid rgba(0,255,153,0.06)}
   .brand{display:flex; align-items:center; gap:14px}
-  .logo{width:58px;height:58px;border-radius:12px; background:linear-gradient(135deg,var(--neon-c2),var(--neon-c1)); display:flex;align-items:center;justify-content:center;color:#000;font-weight:700; box-shadow:0 0 30px rgba(155,0,255,0.12); animation:logoGlow 1.5s ease-in-out infinite alternate;}
-  @keyframes logoGlow{from{box-shadow:0 0 15px rgba(0,255,153,0.2)} to{box-shadow:0 0 40px rgba(155,0,255,0.3)}}
+  
+  /* logo with animation */
+  .logo{
+    width:58px;height:58px;border-radius:12px;
+    background:linear-gradient(135deg,var(--neon-c2),var(--neon-c1));
+    display:flex;align-items:center;justify-content:center;color:#000;font-weight:700;
+    box-shadow:0 0 30px rgba(155,0,255,0.12);
+    animation:logoGlow 2s ease-in-out infinite alternate;
+    cursor:pointer;
+  }
+  @keyframes logoGlow{
+    0%{box-shadow:0 0 20px rgba(155,0,255,0.12)}
+    50%{box-shadow:0 0 50px rgba(0,255,153,0.2)}
+    100%{box-shadow:0 0 30px rgba(155,0,255,0.15)}
+  }
+
   nav{display:flex; gap:14px; align-items:center}
   nav a{padding:8px 12px;border-radius:8px; transition:all .25s; font-weight:600}
   nav a:hover{transform:translateY(-4px); box-shadow:0 8px 30px rgba(0,255,153,0.06); color:var(--neon-c2); text-shadow:0 0 12px var(--neon-c2)}
 
-  .music-btn{margin-left:12px; padding:8px 12px; border-radius:10px; background:linear-gradient(90deg,var(--neon-c2),var(--neon-c1)); color:#000; font-weight:700; cursor:pointer; box-shadow:0 6px 20px rgba(0,255,153,0.12); transition:all .3s;}
-  .music-btn:hover{transform:translateY(-4px); box-shadow:0 12px 40px rgba(155,0,255,0.2); color:#fff; text-shadow:0 0 10px var(--neon-c2)}
-
+  /* hero */
   .hero{padding:48px 20px; text-align:center}
   .title{font-size:clamp(28px,6vw,48px); line-height:1.02; margin:6px 0; font-weight:800; letter-spacing:0.6px; background:linear-gradient(90deg,var(--neon-c1),var(--neon-c2)); -webkit-background-clip:text;color:transparent; animation:textGlow 1.8s ease-in-out infinite alternate;}
   @keyframes textGlow{from{text-shadow:0 0 6px rgba(0,255,153,0.12)} to{text-shadow:0 0 30px rgba(155,0,255,0.15)}}
   .subtitle{color:var(--muted); font-size:18px; margin-bottom:18px}
+
+  /* button */
   .cta{display:inline-block;padding:12px 18px;border-radius:12px;background:linear-gradient(90deg,var(--neon-c2),var(--neon-c1)); color:#000;font-weight:700; box-shadow:0 8px 40px rgba(0,255,153,0.06); transform:translateY(0); transition:transform .18s, box-shadow .18s}
   .cta:hover{transform:translateY(-6px); box-shadow:0 18px 60px rgba(155,0,255,0.12)}
 
+  /* floating neon bg */
   .neon-bg{position:fixed; inset:0; pointer-events:none; mix-blend-mode:screen; opacity:0.06}
   .blob{position:absolute; width:420px;height:420px;border-radius:50%;filter:blur(72px); transform:translate(-50%,-50%); animation:move 12s linear infinite alternate}
   .b1{left:12%; top:18%; background:linear-gradient(90deg,var(--neon-c1),var(--neon-c2))}
   .b2{left:86%; top:78%; width:520px;height:520px;background:linear-gradient(90deg,var(--neon-c2),var(--neon-c1)); animation-duration:14s}
   @keyframes move{from{transform:translate(-50%,-50%) scale(.9)} to{transform:translate(-50%,-50%) scale(1.08)}}
 
+  /* image card */
   .profile-card{display:inline-block;margin-top:24px;border-radius:16px; overflow:hidden;padding:6px;background:linear-gradient(90deg, rgba(155,0,255,0.16), rgba(0,255,153,0.12)); box-shadow:0 30px 80px rgba(0,0,0,0.6);}
   .profile-card img{display:block;height:320px;width:auto; max-width:92vw; border-radius:10px; transition:transform .45s ease, box-shadow .45s ease}
   .profile-card:hover img{transform:scale(1.03); box-shadow:0 30px 60px rgba(0,255,153,0.06)}
 
   footer{padding:24px;text-align:center;color:rgba(159,255,0,0.6); border-top:1px solid rgba(0,255,153,0.04)}
-  .nav-active{outline:2px solid rgba(255,0,255,0.06); box-shadow:0 8px 40px rgba(0,255,153,0.03)}
 
+  /* small responsive */
   @media (max-width:640px){ header{padding:12px} .logo{width:44px;height:44px} }
+
+  /* music button */
+  #musicBtn{
+    position:fixed;
+    bottom:24px;
+    right:24px;
+    background:linear-gradient(90deg,var(--neon-c1),var(--neon-c2));
+    color:#000;
+    font-weight:700;
+    padding:12px 18px;
+    border-radius:12px;
+    cursor:pointer;
+    box-shadow:0 8px 40px rgba(0,255,153,0.12);
+    transition: all 0.25s;
+    z-index:999;
+  }
+  #musicBtn:hover{
+    transform:translateY(-4px);
+    box-shadow:0 18px 60px rgba(155,0,255,0.2);
+    text-shadow:0 0 12px var(--neon-c2);
+  }
 </style>
 </head>
 <body class="page">
@@ -72,13 +111,12 @@
     <a href="gallery.html">Gallery</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
-    <button class="music-btn" id="musicBtn">Play Music</button>
   </nav>
 </header>
 
 <main class="hero">
-  <div class="title">SANTOSH KUMAR BHERA IS SO HOT AND SEXYYYY</div>
-  <div class="subtitle">A GAREEB WEBISITE TO FIND HOT IMAGES OF SANTOSH SIR — welcome to BALLU.</div>
+  <div class="title">SANTOSH KUMAR BHERA IS SO HOT</div>
+  <div class="subtitle">A neon playground for memes, vibes and lol moments — welcome to BALLU.</div>
 
   <a class="cta" href="gallery.html">Open the Gallery</a>
 
@@ -88,19 +126,30 @@
 </main>
 
 <footer>
-  Made with HATE , KEEP IT A SECRET AND SEXYY. © <span id="y"></span>
+  Made with ❤️ — keep it fun & respectful. © <span id="y"></span>
 </footer>
 
+<!-- background music -->
 <audio id="bgMusic" loop>
   <source src="https://drive.google.com/uc?export=download&id=1UEj27ksMCKoeGVWvpmOj91Cln4ACZ5rd" type="audio/mpeg">
 </audio>
+<div id="musicBtn">Play Music</div>
 
 <script>
   document.getElementById('y').textContent = new Date().getFullYear();
 
-  const musicBtn = document.getElementById('musicBtn');
+  // hero fade-in
+  document.addEventListener('DOMContentLoaded', ()=> {
+    const hero = document.querySelector('.hero');
+    hero.style.opacity = 0;
+    setTimeout(()=> hero.style.transition = 'opacity .6s ease', 10);
+    setTimeout(()=> hero.style.opacity = 1, 40);
+  });
+
+  // music controls
   const bgMusic = document.getElementById('bgMusic');
-  bgMusic.volume = 0.3; // initial low volume
+  const musicBtn = document.getElementById('musicBtn');
+  bgMusic.volume = 0.3;
 
   musicBtn.addEventListener('click', ()=>{
     if(bgMusic.paused){
@@ -111,14 +160,7 @@
       musicBtn.textContent = "Play Music";
     }
   });
-
-  document.addEventListener('DOMContentLoaded', ()=> {
-    const hero = document.querySelector('.hero');
-    hero.style.opacity = 0;
-    setTimeout(()=> hero.style.transition = 'opacity .6s ease', 10);
-    setTimeout(()=> hero.style.opacity = 1, 40);
-  });
 </script>
+
 </body>
 </html>
-

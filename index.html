@@ -1,60 +1,105 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>BALLU — Home</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: black;
-            color: #0aff9d;
-            text-align: center;
-        }
-        header {
-            padding: 30px;
-            font-size: 40px;
-            font-weight: bold;
-            text-shadow: 0 0 10px #0aff9d;
-        }
-        nav a {
-            color: #0aff9d;
-            margin: 20px;
-            font-size: 22px;
-            text-decoration: none;
-        }
-        nav a:hover {
-            text-shadow: 0 0 10px #0aff9d;
-        }
-        .big-text {
-            margin-top: 70px;
-            font-size: 33px;
-            color: #ff00ff;
-            text-shadow: 0 0 20px #ff00ff;
-        }
-        .image-box img {
-            margin-top: 40px;
-            width: 350px;
-            border: 4px solid #0aff9d;
-            box-shadow: 0 0 20px #0aff9d;
-        }
-    </style>
-</head>
-<body>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>BALLU — Home</title>
+<style>
+  :root{
+    --neon-c1: #00ff99;
+    --neon-c2: #9b00ff;
+    --bg: #000;
+    --muted: #9ff;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%; margin:0; background:var(--bg); color:var(--neon-c1); font-family:Inter,system-ui,Segoe UI,Roboto,Arial,monospace}
+  a{color:var(--neon-c1); text-decoration:none}
+  /* page fade */
+  .page{animation:fadeIn .7s ease both}
+  @keyframes fadeIn{from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none}}
 
-<header>BALLU.com</header>
-<nav>
-    <a href="index.html">Home</a>
+  header{display:flex; justify-content:space-between; align-items:center; padding:18px 28px; border-bottom:1px solid rgba(0,255,153,0.06)}
+  .brand{display:flex; align-items:center; gap:14px}
+  .logo{width:58px;height:58px;border-radius:12px; background:linear-gradient(135deg,var(--neon-c2),var(--neon-c1)); display:flex;align-items:center;justify-content:center;color:#000;font-weight:700; box-shadow:0 0 30px rgba(155,0,255,0.12)}
+  nav{display:flex; gap:14px; align-items:center}
+  nav a{padding:8px 12px;border-radius:8px; transition:all .25s; font-weight:600}
+  nav a:hover{transform:translateY(-4px); box-shadow:0 8px 30px rgba(0,255,153,0.06); color:var(--neon-c2); text-shadow:0 0 12px var(--neon-c2)}
+  /* hero */
+  .hero{padding:48px 20px; text-align:center}
+  .title{font-size:clamp(28px,6vw,48px); line-height:1.02; margin:6px 0; font-weight:800; letter-spacing:0.6px; background:linear-gradient(90deg,var(--neon-c1),var(--neon-c2)); -webkit-background-clip:text;color:transparent; animation:textGlow 1.8s ease-in-out infinite alternate;}
+  @keyframes textGlow{from{text-shadow:0 0 6px rgba(0,255,153,0.12)} to{text-shadow:0 0 30px rgba(155,0,255,0.15)}}
+  .subtitle{color:var(--muted); font-size:18px; margin-bottom:18px}
+  /* button */
+  .cta{display:inline-block;padding:12px 18px;border-radius:12px;background:linear-gradient(90deg,var(--neon-c2),var(--neon-c1)); color:#000;font-weight:700; box-shadow:0 8px 40px rgba(0,255,153,0.06); transform:translateY(0); transition:transform .18s, box-shadow .18s}
+  .cta:hover{transform:translateY(-6px); box-shadow:0 18px 60px rgba(155,0,255,0.12)}
+  /* floating neon bg */
+  .neon-bg{position:fixed; inset:0; pointer-events:none; mix-blend-mode:screen; opacity:0.06}
+  .blob{position:absolute; width:420px;height:420px;border-radius:50%;filter:blur(72px); transform:translate(-50%,-50%); animation:move 12s linear infinite alternate}
+  .b1{left:12%; top:18%; background:linear-gradient(90deg,var(--neon-c1),var(--neon-c2))}
+  .b2{left:86%; top:78%; width:520px;height:520px;background:linear-gradient(90deg,var(--neon-c2),var(--neon-c1)); animation-duration:14s}
+  @keyframes move{from{transform:translate(-50%,-50%) scale(.9)} to{transform:translate(-50%,-50%) scale(1.08)}}
+
+  /* image card */
+  .profile-card{display:inline-block;margin-top:24px;border-radius:16px; overflow:hidden;padding:6px;background:linear-gradient(90deg, rgba(155,0,255,0.16), rgba(0,255,153,0.12)); box-shadow:0 30px 80px rgba(0,0,0,0.6);}
+  .profile-card img{display:block;height:320px;width:auto; max-width:92vw; border-radius:10px; transition:transform .45s ease, box-shadow .45s ease}
+  .profile-card:hover img{transform:scale(1.03); box-shadow:0 30px 60px rgba(0,255,153,0.06)}
+
+  footer{padding:24px;text-align:center;color:rgba(159,255,0,0.6); border-top:1px solid rgba(0,255,153,0.04)}
+  /* tiny page nav highlight */
+  .nav-active{outline:2px solid rgba(255,0,255,0.06); box-shadow:0 8px 40px rgba(0,255,153,0.03)}
+  /* small responsive */
+  @media (max-width:640px){ header{padding:12px} .logo{width:44px;height:44px} }
+</style>
+</head>
+<body class="page">
+
+<div class="neon-bg" aria-hidden="true">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+</div>
+
+<header>
+  <div class="brand">
+    <div class="logo">B</div>
+    <div>
+      <div style="font-weight:700">BALLU</div>
+      <div style="font-size:12px;color:rgba(160,255,200,0.6)">Neon Gallery</div>
+    </div>
+  </div>
+
+  <nav>
+    <a href="index.html" class="nav-active">Home</a>
     <a href="gallery.html">Gallery</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
-</nav>
+  </nav>
+</header>
 
-<p class="big-text">SANTOSH KUMAR BHERA IS SO HOT 😩🔥</p>
+<main class="hero">
+  <div class="title">SANTOSH KUMAR BHERA IS SO HOT</div>
+  <div class="subtitle">A neon playground for memes, vibes and lol moments — welcome to BALLU.</div>
 
-<div class="image-box">
-    <img src="0bf405e9-c7f2-4106-9940-b9102bfa60ad.png" alt="Funny Image">
-</div>
+  <a class="cta" href="gallery.html">Open the Gallery</a>
 
+  <div class="profile-card" role="img" aria-label="Profile image">
+    <img src="0bf405e9-c7f2-4106-9940-b9102bfa60ad.png" alt="profile photo">
+  </div>
+</main>
+
+<footer>
+  Made with ❤️ — keep it fun & respectful. © <span id="y"></span>
+</footer>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+  // small entrance animation for hero elements (stagger)
+  document.addEventListener('DOMContentLoaded', ()=> {
+    const hero = document.querySelector('.hero');
+    hero.style.opacity = 0;
+    setTimeout(()=> hero.style.transition = 'opacity .6s ease', 10);
+    setTimeout(()=> hero.style.opacity = 1, 40);
+  });
+</script>
 </body>
 </html>
+

@@ -1,58 +1,41 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>BALLU — Contact</title>
-    <style>
-        body {
-            margin: 0;
-            background-color: black;
-            color: #0aff9d;
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-        header {
-            padding: 25px;
-            font-size: 35px;
-            text-shadow: 0 0 10px #0aff9d;
-        }
-        nav a {
-            color: #0aff9d;
-            margin: 20px;
-            font-size: 22px;
-            text-decoration: none;
-        }
-        nav a:hover {
-            text-shadow: 0 0 10px #0aff9d;
-        }
-        .box {
-            width: 70%;
-            margin: auto;
-            margin-top: 40px;
-            padding: 20px;
-            border: 2px solid #ff00ff;
-            box-shadow: 0 0 20px #ff00ff;
-            border-radius: 10px;
-        }
-    </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>BALLU — Contact</title>
+<style>
+  :root{--neon1:#00ff99; --neon2:#9b00ff; --bg:#000}
+  body{margin:0;background:var(--bg);color:var(--neon1);font-family:Inter,Arial,monospace}
+  header{display:flex;justify-content:space-between;padding:16px 22px;border-bottom:1px solid rgba(0,255,153,0.05)}
+  nav a{color:var(--neon1);margin:0 8px;text-decoration:none}
+  main{padding:36px;text-align:center}
+  .box{display:inline-block;padding:20px 26px;border-radius:14px;border:1px solid rgba(0,255,153,0.04); box-shadow:0 30px 60px rgba(0,0,0,0.6); background:linear-gradient(180deg, rgba(155,0,255,0.02), rgba(0,255,153,0.01))}
+  .btn{display:inline-block;margin-top:14px;padding:12px 20px;border-radius:12px;background:linear-gradient(90deg,var(--neon2),var(--neon1)); color:#000; font-weight:800; text-decoration:none; transition:transform .18s}
+  .btn:hover{transform:translateY(-6px) scale(1.02)}
+  .pulse-note{margin-top:12px;color:rgba(200,255,200,0.9)}
+</style>
 </head>
 <body>
 
-<header>Contact</header>
-
-<nav>
+<header>
+  <div style="font-weight:800">BALLU — Contact</div>
+  <nav>
     <a href="index.html">Home</a>
     <a href="gallery.html">Gallery</a>
     <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-</nav>
+    <a href="contact.html" style="outline:2px solid rgba(0,255,153,0.04); padding:6px;border-radius:8px">Contact</a>
+  </nav>
+</header>
 
-<div class="box">
+<main>
+  <div class="box">
     <h2>Contact BALLU 💌</h2>
-    <p>Instagram: @ballu</p>
-    <p>Snapchat: @ballu</p>
-    <p>Email: ballu@gmail.com</p>
-</div>
+    <p class="pulse-note">Want to collab, submit a photo, or request edits? Drop a message.</p>
+    <a class="btn" href="mailto:balluwebsite@gmail.com">Email BALLU</a>
+    <div style="margin-top:12px;color:rgba(150,255,200,0.8);font-size:13px">Tip: include image names if you want them added to the gallery</div>
+  </div>
+</main>
 
 </body>
 </html>

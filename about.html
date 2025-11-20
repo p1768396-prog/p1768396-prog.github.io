@@ -1,57 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>BALLU — About</title>
-    <style>
-        body {
-            margin: 0;
-            background-color: black;
-            color: #0aff9d;
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-        header {
-            padding: 25px;
-            font-size: 35px;
-            text-shadow: 0 0 10px #0aff9d;
-        }
-        nav a {
-            color: #0aff9d;
-            margin: 20px;
-            font-size: 22px;
-            text-decoration: none;
-        }
-        nav a:hover {
-            text-shadow: 0 0 10px #0aff9d;
-        }
-        .box {
-            width: 70%;
-            margin: auto;
-            margin-top: 40px;
-            padding: 20px;
-            border: 2px solid #ff00ff;
-            box-shadow: 0 0 20px #ff00ff;
-            border-radius: 10px;
-        }
-    </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>BALLU — About</title>
+<style>
+  :root{--neon1:#00ff99; --neon2:#9b00ff; --bg:#000}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--neon1);font-family:Inter,Arial,monospace}
+  header{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;border-bottom:1px solid rgba(0,255,153,0.05)}
+  nav a{color:var(--neon1);margin:0 8px;text-decoration:none;font-weight:700}
+  main{padding:36px; display:flex; gap:28px; align-items:center; justify-content:center; flex-wrap:wrap}
+  .card{background:linear-gradient(180deg, rgba(155,0,255,0.03), rgba(0,255,153,0.02)); padding:24px; border-radius:14px; width:760px; max-width:92vw; border:1px solid rgba(0,255,153,0.04); box-shadow:0 30px 80px rgba(0,0,0,0.6)}
+  .profile{width:220px; height:220px; border-radius:14px; overflow:hidden; border:6px solid rgba(0,255,153,0.06); animation:pulse 2.2s ease-in-out infinite}
+  .profile img{width:100%; height:100%; object-fit:cover; display:block}
+  @keyframes pulse{0%{box-shadow:0 0 0 rgba(0,255,153,0.02)}50%{box-shadow:0 0 60px rgba(155,0,255,0.06)}100%{box-shadow:0 0 0 rgba(0,255,153,0.02)}}
+  h1{margin:0 0 12px 0}
+  p{color:rgba(159,255,200,0.9); line-height:1.5}
+  .accent{color:var(--neon2); font-weight:800}
+</style>
 </head>
 <body>
 
-<header>About BALLU</header>
-
-<nav>
+<header>
+  <div style="font-weight:800">BALLU — About</div>
+  <nav>
     <a href="index.html">Home</a>
     <a href="gallery.html">Gallery</a>
-    <a href="about.html">About</a>
+    <a href="about.html" style="outline:2px solid rgba(155,0,255,0.05); padding:6px;border-radius:8px">About</a>
     <a href="contact.html">Contact</a>
-</nav>
+  </nav>
+</header>
 
-<div class="box">
-    <h2>About Me 🤭🔥</h2>
-    <p>I am BALLU. I upload funny pictures of my friends.</p>
-    <p>I AM GAY AND I REALLY REALLY REALLY LOVE SANTOSHHHHHHHHH 😩🔥</p>
-</div>
+<main>
+  <div class="profile" aria-hidden="false">
+    <img src="cd73f0b8-91e0-4747-a883-a3c8f6ce55d5.png" alt="profile">
+  </div>
+
+  <div class="card">
+    <h1>About BALLU <span class="accent">🤡</span></h1>
+    <p><strong>I'M GAY and I really really really really LOVEEE SANTOSHHHHHHHH</strong></p>
+    <p>This small corner of the web is for laughs and good vibes. Upload photos, share jokes, and keep the energy fun and respectful.</p>
+    <p style="margin-top:14px; color:rgba(180,255,200,0.8)">Want edits, filters, or animated stickers on your images? Tell me and I’ll prepare them.</p>
+  </div>
+</main>
 
 </body>
 </html>

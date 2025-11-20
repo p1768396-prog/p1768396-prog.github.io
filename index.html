@@ -20,8 +20,8 @@
 
   header{display:flex; justify-content:space-between; align-items:center; padding:18px 28px; border-bottom:1px solid rgba(0,255,153,0.06)}
   .brand{display:flex; align-items:center; gap:14px}
-  .logo{width:58px;height:58px;border-radius:12px; background:linear-gradient(135deg,var(--neon-c2),var(--neon-c1)); display:flex;align-items:center;justify-content:center;color:#000;font-weight:700; box-shadow:0 0 30px rgba(155,0,255,0.12); animation:logoPulse 2s infinite alternate;}
-  @keyframes logoPulse{0%{box-shadow:0 0 30px rgba(155,0,255,0.12)}100%{box-shadow:0 0 60px rgba(0,255,153,0.2)}}
+  .logo{width:58px;height:58px;border-radius:12px; background:linear-gradient(135deg,var(--neon-c2),var(--neon-c1)); display:flex;align-items:center;justify-content:center;color:#000;font-weight:700; box-shadow:0 0 30px rgba(155,0,255,0.12); animation:logoPulse 2s ease-in-out infinite alternate;}
+  @keyframes logoPulse{from{box-shadow:0 0 20px rgba(155,0,255,0.2), 0 0 30px rgba(0,255,153,0.2)} to{box-shadow:0 0 40px rgba(155,0,255,0.6), 0 0 60px rgba(0,255,153,0.6)}}
   nav{display:flex; gap:14px; align-items:center}
   nav a{padding:8px 12px;border-radius:8px; transition:all .25s; font-weight:600}
   nav a:hover{transform:translateY(-4px); box-shadow:0 8px 30px rgba(0,255,153,0.06); color:var(--neon-c2); text-shadow:0 0 12px var(--neon-c2)}
@@ -46,10 +46,32 @@
   .profile-card:hover img{transform:scale(1.03); box-shadow:0 30px 60px rgba(0,255,153,0.06)}
 
   footer{padding:24px;text-align:center;color:rgba(159,255,0,0.6); border-top:1px solid rgba(0,255,153,0.04)}
-  /* tiny page nav highlight */
   .nav-active{outline:2px solid rgba(255,0,255,0.06); box-shadow:0 8px 40px rgba(0,255,153,0.03)}
+
   /* small responsive */
   @media (max-width:640px){ header{padding:12px} .logo{width:44px;height:44px} }
+
+  /* Music button */
+  #music-btn{
+    position: fixed;
+    bottom: 18px;
+    right: 18px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(90deg,#9b00ff,#00ff99);
+    color: #000;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: Inter, system-ui, sans-serif;
+    box-shadow: 0 0 12px #00ff99, 0 0 24px #9b00ff, 0 0 36px #00ff99;
+    transition: all 0.3s ease;
+    z-index: 999;
+  }
+  #music-btn:hover{
+    transform: translateY(-4px);
+    box-shadow: 0 0 20px #00ff99, 0 0 40px #9b00ff, 0 0 60px #00ff99;
+  }
 </style>
 </head>
 <body class="page">
@@ -91,6 +113,8 @@
   Made with ❤️ — keep it fun & respectful. © <span id="y"></span>
 </footer>
 
+<button id="music-btn">Play Music</button>
+
 <script>
   document.getElementById('y').textContent = new Date().getFullYear();
   document.addEventListener('DOMContentLoaded', ()=> {
@@ -100,42 +124,15 @@
     setTimeout(()=> hero.style.opacity = 1, 40);
   });
 
-  // Background music
+  // Music
   const music = new Audio('https://drive.google.com/uc?export=download&id=1UEj27ksMCKoeGVWvpmOj91Cln4ACZ5rd');
   music.loop = true;
   music.volume = 0.7;
-  music.play().catch(()=>{});
 
-  // Music control button
-  const btn = document.createElement('button');
-  btn.textContent = 'Pause Music';
-  btn.style.position = 'fixed';
-  btn.style.bottom = '18px';
-  btn.style.right = '18px';
-  btn.style.padding = '12px 20px';
-  btn.style.border = 'none';
-  btn.style.borderRadius = '12px';
-  btn.style.background = 'linear-gradient(90deg,#9b00ff,#00ff99)';
-  btn.style.color = '#000';
-  btn.style.fontWeight = '700';
-  btn.style.cursor = 'pointer';
-  btn.style.fontFamily = 'Inter, system-ui, sans-serif';
-  btn.style.boxShadow = '0 0 12px #00ff99, 0 0 24px #9b00ff, 0 0 36px #00ff99';
-  btn.style.transition = 'all 0.3s ease';
-  document.body.appendChild(btn);
-
-  btn.addEventListener('mouseover', () => {
-    btn.style.transform = 'translateY(-4px)';
-    btn.style.boxShadow = '0 0 20px #00ff99, 0 0 40px #9b00ff, 0 0 60px #00ff99';
-  });
-  btn.addEventListener('mouseout', () => {
-    btn.style.transform = 'translateY(0)';
-    btn.style.boxShadow = '0 0 12px #00ff99, 0 0 24px #9b00ff, 0 0 36px #00ff99';
-  });
-
+  const btn = document.getElementById('music-btn');
   btn.addEventListener('click', () => {
-    if (music.paused) {
-      music.play();
+    if(music.paused){
+      music.play().catch(()=>{});
       btn.textContent = 'Pause Music';
     } else {
       music.pause();
@@ -143,5 +140,6 @@
     }
   });
 </script>
+
 </body>
 </html>

@@ -3,49 +3,39 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>BALLU — About</title>
+<title>BALLU — Contact</title>
 <style>
   :root{--neon1:#00ff99; --neon2:#9b00ff; --bg:#000}
-  *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--neon1);font-family:Inter,Arial,monospace}
-  header{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;border-bottom:1px solid rgba(0,255,153,0.05)}
-  nav a{color:var(--neon1);margin:0 8px;text-decoration:none;font-weight:700}
-  main{padding:36px; display:flex; gap:28px; align-items:center; justify-content:center; flex-wrap:wrap}
-  .card{background:linear-gradient(180deg, rgba(155,0,255,0.03), rgba(0,255,153,0.02)); padding:24px; border-radius:14px; width:760px; max-width:92vw; border:1px solid rgba(0,255,153,0.04); box-shadow:0 30px 80px rgba(0,0,0,0.6)}
-  .profile{width:220px; height:220px; border-radius:14px; overflow:hidden; border:6px solid rgba(0,255,153,0.06); animation:pulse 2.2s ease-in-out infinite}
-  .profile img{width:100%; height:100%; object-fit:cover; display:block}
-  @keyframes pulse{0%{box-shadow:0 0 0 rgba(0,255,153,0.02)}50%{box-shadow:0 0 60px rgba(155,0,255,0.06)}100%{box-shadow:0 0 0 rgba(0,255,153,0.02)}}
-  h1{margin:0 0 12px 0}
-  p{color:rgba(159,255,200,0.9); line-height:1.5}
-  .accent{color:var(--neon2); font-weight:800}
+  header{display:flex;justify-content:space-between;padding:16px 22px;border-bottom:1px solid rgba(0,255,153,0.05)}
+  nav a{color:var(--neon1);margin:0 8px;text-decoration:none}
+  main{padding:36px;text-align:center}
+  .box{display:inline-block;padding:20px 26px;border-radius:14px;border:1px solid rgba(0,255,153,0.04); box-shadow:0 30px 60px rgba(0,0,0,0.6); background:linear-gradient(180deg, rgba(155,0,255,0.02), rgba(0,255,153,0.01))}
+  .btn{display:inline-block;margin-top:14px;padding:12px 20px;border-radius:12px;background:linear-gradient(90deg,var(--neon2),var(--neon1)); color:#000; font-weight:800; text-decoration:none; transition:transform .18s}
+  .btn:hover{transform:translateY(-6px) scale(1.02)}
+  .pulse-note{margin-top:12px;color:rgba(200,255,200,0.9)}
 </style>
 </head>
 <body>
 
 <header>
-  <div style="font-weight:800">BALLU — About</div>
+  <div style="font-weight:800">BALLU — Contact</div>
   <nav>
     <a href="index.html">Home</a>
     <a href="gallery.html">Gallery</a>
-    <a href="about.html" style="outline:2px solid rgba(155,0,255,0.05); padding:6px;border-radius:8px">About</a>
-    <a href="contact.html">Contact</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" style="outline:2px solid rgba(0,255,153,0.04); padding:6px;border-radius:8px">Contact</a>
   </nav>
 </header>
 
 <main>
-  <div class="profile" aria-hidden="false">
-    <img src="0bf405e9-c7f2-4106-9940-b9102bfa60ad.png" alt="profile">
-  </div>
-
-  <div class="card">
-    <h1>About BALLU <span class="accent">🤡</span></h1>
-    <p><strong>I'M GAY and I really really really really LOVEEE SANTOSHHHHHHHH</strong></p>
-    <p>here you can find the hottest photos of the one and only goated santosh sir.</p>
-    <p style="margin-top:14px; color:rgba(180,255,200,0.8)">Want to upload you images ? Tell me and I’ll prepare them.</p>
+  <div class="box">
+    <h2>Contact BALLU 💌</h2>
+    <p class="pulse-note">Want to collab, submit a photo, OR INSTA ME on pratya._.ksh .</p>
+    <a class="btn" href="mailto:p1768396@gmail.com">Email BALLU</a>
+    <div style="margin-top:12px;color:rgba(150,255,200,0.8);font-size:13px"> SEND ME GOOD PHOTOS </div>
   </div>
 </main>
 
 </body>
 </html>
-
-

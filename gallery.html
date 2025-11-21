@@ -5,12 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>BALLU — Gallery</title>
 <style>
-  :root{
-    --neon1:#00ff99; 
-    --neon2:#9b00ff; 
-    --bg:#000; 
-    --muted:#9ff;
-  }
+  :root{--neon1:#00ff99; --neon2:#9b00ff; --bg:#000; --muted:#9ff}
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--neon1);font-family:Inter,Arial,monospace}
   header{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;border-bottom:1px solid rgba(0,255,153,0.05)}
@@ -19,29 +14,22 @@
   .wrap{padding:28px}
   h1{font-size:40px;margin:6px 0;text-shadow:0 0 12px rgba(0,255,153,0.06)}
   .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;align-items:start;margin-top:20px}
-  .tile{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:12px;border-radius:14px;border:1px solid rgba(0,255,153,0.04); transition:all .25s; text-align:center; opacity:0; transform:translateY(12px); animation:reveal .5s ease forwards;}
-  .tile:nth-child(1){animation-delay:.06s}
-  .tile:nth-child(2){animation-delay:.12s}
-  .tile:nth-child(3){animation-delay:.18s}
+  .tile{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:12px;border-radius:14px;border:1px solid rgba(0,255,153,0.04); transition:all .25s; text-align:center;}
   .tile img{width:100%;height:220px;object-fit:cover;border-radius:10px;border:3px solid var(--neon1); box-shadow:0 12px 40px rgba(0,255,153,0.04); transform:translateY(0); transition:transform .35s, box-shadow .35s}
   .tile:hover{transform:translateY(-8px); box-shadow:0 30px 70px rgba(0,0,0,0.6)}
   .tile:hover img{transform:scale(1.03); box-shadow:0 30px 80px rgba(155,0,255,0.06)}
   .caption{color:var(--muted); margin-top:8px; font-size:15px}
-  @keyframes reveal{to{opacity:1; transform:none}}
+  /* modal */
   .modal{position:fixed; inset:0; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,0.7); z-index:60}
   .modal.open{display:flex}
   .modal img{max-width:92%; max-height:86%; border-radius:12px; border:6px solid rgba(0,255,153,0.08); box-shadow:0 50px 120px rgba(0,0,0,0.8)}
   .close{position:fixed; right:22px; top:18px; color:var(--neon2); font-weight:900; font-size:22px; cursor:pointer}
-  /* Music button */
-  #music-btn{
-    position:fixed; bottom:24px; right:24px; width:52px; height:52px; border-radius:50%; background:linear-gradient(135deg,var(--neon1),var(--neon2));
-    display:flex; align-items:center; justify-content:center; font-size:24px; cursor:pointer;
-    box-shadow:0 4px 20px rgba(0,255,153,0.2); transition: all .25s;
-  }
-  #music-btn:hover{
-    transform:translateY(-4px) scale(1.1);
-    box-shadow:0 10px 40px rgba(155,0,255,0.2);
-  }
+  /* subtle reveal */
+  .tile{opacity:0; transform:translateY(12px); animation:reveal .5s ease forwards}
+  .tile:nth-child(1){animation-delay:.06s}
+  .tile:nth-child(2){animation-delay:.12s}
+  .tile:nth-child(3){animation-delay:.18s}
+  @keyframes reveal{to{opacity:1; transform:none}}
   @media(max-width:520px){ .tile img{height:180px} }
 </style>
 </head>
@@ -66,37 +54,24 @@
       <div class="caption">Santosh energy HOT </div>
     </div>
 
-    <div class="tile">
-      <img src="cd73f0b8-91e0-4747-a883-a3c8f6ce55d5.png" alt="Friend 2" data-full="cd73f0b8-91e0-4747-a883-a3c8f6ce55d5.png">
-      <div class="caption">FAKE SANOTSH ALERT  ✔️</div>
-    </div>
+    <!-- Second image removed -->
 
-    <!-- add more tiles here -->
   </div>
 
-  <p style="color:var(--neon2); margin-top:22px; font-size:14px">
-    SUBMIT ME PHOTOS and get a chance to get your photo on website
-  </p>
-</main>
+  <p style="color:var(--neon2); margin-top:22px; font-size:14px"> SUBMIT ME PHOTOS and get a chance to get your photo on website </p>
 
-<!-- modal for enlarged images -->
 <div id="modal" class="modal" role="dialog" aria-hidden="true">
   <div class="close" id="close">✕</div>
   <img id="modalImg" src="" alt="enlarged">
 </div>
 
-<!-- music -->
-<audio id="bg-music" loop>
-  <source src="https://drive.google.com/uc?export=download&id=1UEj27ksMCKoeGVWvpmOj91Cln4ACZ5rd" type="audio/mpeg">
-</audio>
-<div id="music-btn">🎵</div>
-
 <script>
-  // modal logic
+  // click-to-open modal
   const grid = document.getElementById('grid');
   const modal = document.getElementById('modal');
   const modalImg = document.getElementById('modalImg');
   const close = document.getElementById('close');
+
   grid.addEventListener('click', e=>{
     const img = e.target.closest('img');
     if(!img) return;
@@ -112,26 +87,9 @@
   window.addEventListener('keydown', e=>{
     if(e.key === 'Escape') close.click();
   });
+  // click modal background closes
   modal.addEventListener('click', e=>{
     if(e.target === modal) close.click();
-  });
-
-  // music play/pause
-  const musicBtn = document.getElementById('music-btn');
-  const music = document.getElementById('bg-music');
-  music.volume = 0.25;
-  let isPlaying = false;
-
-  musicBtn.addEventListener('click', ()=>{
-    if(!isPlaying){ 
-      music.play().catch(e=>console.log("Playback blocked:", e)); 
-      isPlaying=true; 
-      musicBtn.textContent='⏸️'; 
-    } else { 
-      music.pause(); 
-      isPlaying=false; 
-      musicBtn.textContent='🎵'; 
-    }
   });
 </script>
 

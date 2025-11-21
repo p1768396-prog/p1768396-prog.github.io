@@ -14,39 +14,34 @@
   *{box-sizing:border-box}
   html,body{height:100%; margin:0; background:var(--bg); color:var(--neon-c1); font-family:Inter,system-ui,Segoe UI,Roboto,Arial,monospace}
   a{color:var(--neon-c1); text-decoration:none}
+  .page{animation:fadeIn .7s ease both}
+  @keyframes fadeIn{from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none}}
+
   header{display:flex; justify-content:space-between; align-items:center; padding:18px 28px; border-bottom:1px solid rgba(0,255,153,0.06)}
   .brand{display:flex; align-items:center; gap:14px}
-  .logo{width:120px;height:58px;border-radius:12px; background:linear-gradient(135deg,var(--neon-c2),var(--neon-c1)); display:flex;align-items:center;justify-content:center;color:#000;font-weight:700; box-shadow:0 0 30px rgba(155,0,255,0.12); animation:logoGlow 2s infinite alternate;}
-  @keyframes logoGlow{0%{box-shadow:0 0 20px rgba(155,0,255,0.12)}50%{box-shadow:0 0 40px rgba(0,255,153,0.15)}100%{box-shadow:0 0 20px rgba(155,0,255,0.12)}}
+  .logo{width:120px;height:58px;border-radius:12px; background:linear-gradient(135deg,var(--neon-c2),var(--neon-c1)); display:flex;align-items:center;justify-content:center;color:#000;font-weight:700; box-shadow:0 0 30px rgba(155,0,255,0.12); font-size:20px;}
   nav{display:flex; gap:14px; align-items:center}
   nav a{padding:8px 12px;border-radius:8px; transition:all .25s; font-weight:600}
   nav a:hover{transform:translateY(-4px); box-shadow:0 8px 30px rgba(0,255,153,0.06); color:var(--neon-c2); text-shadow:0 0 12px var(--neon-c2)}
+
   .hero{padding:48px 20px; text-align:center}
   .title{font-size:clamp(28px,6vw,48px); line-height:1.02; margin:6px 0; font-weight:800; letter-spacing:0.6px; background:linear-gradient(90deg,var(--neon-c1),var(--neon-c2)); -webkit-background-clip:text;color:transparent; animation:textGlow 1.8s ease-in-out infinite alternate;}
   @keyframes textGlow{from{text-shadow:0 0 6px rgba(0,255,153,0.12)} to{text-shadow:0 0 30px rgba(155,0,255,0.15)}}
   .subtitle{color:var(--muted); font-size:18px; margin-bottom:18px}
   .cta{display:inline-block;padding:12px 18px;border-radius:12px;background:linear-gradient(90deg,var(--neon-c2),var(--neon-c1)); color:#000;font-weight:700; box-shadow:0 8px 40px rgba(0,255,153,0.06); transform:translateY(0); transition:transform .18s, box-shadow .18s}
   .cta:hover{transform:translateY(-6px); box-shadow:0 18px 60px rgba(155,0,255,0.12)}
-  .neon-bg{position:fixed; inset:0; pointer-events:none; mix-blend-mode:screen; opacity:0.06}
-  .blob{position:absolute; width:420px;height:420px;border-radius:50%;filter:blur(72px); transform:translate(-50%,-50%); animation:move 12s linear infinite alternate}
-  .b1{left:12%; top:18%; background:linear-gradient(90deg,var(--neon-c1),var(--neon-c2))}
-  .b2{left:86%; top:78%; width:520px;height:520px;background:linear-gradient(90deg,var(--neon-c2),var(--neon-c1)); animation-duration:14s}
-  @keyframes move{from{transform:translate(-50%,-50%) scale(.9)} to{transform:translate(-50%,-50%) scale(1.08)}}
+
   .profile-card{display:inline-block;margin-top:24px;border-radius:16px; overflow:hidden;padding:6px;background:linear-gradient(90deg, rgba(155,0,255,0.16), rgba(0,255,153,0.12)); box-shadow:0 30px 80px rgba(0,0,0,0.6);}
   .profile-card img{display:block;height:320px;width:auto; max-width:92vw; border-radius:10px; transition:transform .45s ease, box-shadow .45s ease}
   .profile-card:hover img{transform:scale(1.03); box-shadow:0 30px 60px rgba(0,255,153,0.06)}
+
   footer{padding:24px;text-align:center;color:rgba(159,255,0,0.6); border-top:1px solid rgba(0,255,153,0.04)}
-  @media (max-width:640px){ header{padding:12px} .logo{width:100px;height:44px} }
-  #musicBtn{padding:8px 12px; border-radius:8px; background:linear-gradient(90deg,var(--neon2),var(--neon1)); color:#000; font-weight:700; cursor:pointer; margin-left:12px; transition: all 0.25s}
+
+  #musicBtn{margin-top:16px; padding:10px 16px; border-radius:8px; background:linear-gradient(90deg,var(--neon-c2),var(--neon-c1)); color:#000; font-weight:700; cursor:pointer; transition: all 0.25s;}
   #musicBtn:hover{transform:translateY(-4px); box-shadow:0 8px 30px rgba(0,255,153,0.12);}
 </style>
 </head>
 <body class="page">
-
-<div class="neon-bg" aria-hidden="true">
-  <div class="blob b1"></div>
-  <div class="blob b2"></div>
-</div>
 
 <header>
   <div class="brand">
@@ -58,20 +53,19 @@
     <a href="gallery.html">Gallery</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
-    <button id="musicBtn">🔊 Music</button>
   </nav>
 </header>
 
 <audio id="bgMusic" loop>
   <source src="res/ballu dudh wala ballu doodh wala.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
 </audio>
+<button id="musicBtn">🔊 Music</button>
 
 <main class="hero">
   <div class="title">SANTOSH KUMAR BHERA documentary</div>
-  <div class="subtitle">the fattest website of all time -100000 social credit — welcome to BALLU.</div>
+  <div class="subtitle">The fattest website of all time -100000 social credit — welcome to BALLU.</div>
 
-  <a class="cta" href="gallery.html">CLICK TO CHECK OUT HOT PHOTOS</a>
+  <a class="cta" href="https://p1768396-prog.github.io/gallery.html">CLICK TO CHECK OUT HOT PHOTOS</a>
 
   <div class="profile-card" role="img" aria-label="Profile image">
     <img src="0bf405e9-c7f2-4106-9940-b9102bfa60ad.png" alt="profile photo">
@@ -79,12 +73,10 @@
 </main>
 
 <footer>
-  Made with fatness and pure fatty acids. © <span id="y"></span>
+  Made with fatness and pure fatty acids. © 2025
 </footer>
 
 <script>
-  document.getElementById('y').textContent = new Date().getFullYear();
-
   const music = document.getElementById('bgMusic');
   const btn = document.getElementById('musicBtn');
   let playing = false;
@@ -101,14 +93,6 @@
       btn.textContent = "🔊 Music";
     }
   });
-
-  document.addEventListener('DOMContentLoaded', ()=> {
-    const hero = document.querySelector('.hero');
-    hero.style.opacity = 0;
-    setTimeout(()=> hero.style.transition = 'opacity .6s ease', 10);
-    setTimeout(()=> hero.style.opacity = 1, 40);
-  });
 </script>
-
 </body>
 </html>

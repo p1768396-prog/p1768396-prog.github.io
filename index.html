@@ -14,43 +14,48 @@
   *{box-sizing:border-box}
   html,body{height:100%; margin:0; background:var(--bg); color:var(--neon-c1); font-family:Inter,system-ui,Segoe UI,Roboto,Arial,monospace}
   a{color:var(--neon-c1); text-decoration:none}
+
+  /* page fade */
   .page{animation:fadeIn .7s ease both}
   @keyframes fadeIn{from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none}}
 
   header{display:flex; justify-content:space-between; align-items:center; padding:18px 28px; border-bottom:1px solid rgba(0,255,153,0.06)}
   .brand{display:flex; align-items:center; gap:14px}
-  .logo{font-size:28px; font-weight:800; background:linear-gradient(135deg,var(--neon-c2),var(--neon-c1)); -webkit-background-clip:text; color:transparent; text-shadow:0 0 10px var(--neon-c1), 0 0 20px var(--neon-c2); animation:logoGlow 1.8s ease-in-out infinite alternate; cursor:pointer;}
-  @keyframes logoGlow{from{text-shadow:0 0 10px var(--neon-c1),0 0 20px var(--neon-c2)} to{text-shadow:0 0 20px var(--neon-c1),0 0 40px var(--neon-c2)}}
+  .logo{width:120px; height:58px; border-radius:12px; background:linear-gradient(135deg,var(--neon-c2),var(--neon-c1)); display:flex; align-items:center; justify-content:center; color:#000; font-weight:700; font-size:24px; text-transform:uppercase; box-shadow:0 0 30px rgba(155,0,255,0.12); animation:logoGlow 2s infinite alternate;}
+  @keyframes logoGlow{0%{text-shadow:0 0 6px rgba(0,255,153,0.12)}50%{text-shadow:0 0 20px rgba(155,0,255,0.18)}100%{text-shadow:0 0 10px rgba(0,255,153,0.15)}}
 
   nav{display:flex; gap:14px; align-items:center}
   nav a{padding:8px 12px;border-radius:8px; transition:all .25s; font-weight:600}
   nav a:hover{transform:translateY(-4px); box-shadow:0 8px 30px rgba(0,255,153,0.06); color:var(--neon-c2); text-shadow:0 0 12px var(--neon-c2)}
 
+  /* hero */
   .hero{padding:48px 20px; text-align:center}
   .title{font-size:clamp(28px,6vw,48px); line-height:1.02; margin:6px 0; font-weight:800; letter-spacing:0.6px; background:linear-gradient(90deg,var(--neon-c1),var(--neon-c2)); -webkit-background-clip:text;color:transparent; animation:textGlow 1.8s ease-in-out infinite alternate;}
   @keyframes textGlow{from{text-shadow:0 0 6px rgba(0,255,153,0.12)} to{text-shadow:0 0 30px rgba(155,0,255,0.15)}}
   .subtitle{color:var(--muted); font-size:18px; margin-bottom:18px}
 
+  /* button */
   .cta{display:inline-block;padding:12px 18px;border-radius:12px;background:linear-gradient(90deg,var(--neon-c2),var(--neon-c1)); color:#000;font-weight:700; box-shadow:0 8px 40px rgba(0,255,153,0.06); transform:translateY(0); transition:transform .18s, box-shadow .18s}
   .cta:hover{transform:translateY(-6px); box-shadow:0 18px 60px rgba(155,0,255,0.12)}
 
+  /* floating neon bg */
   .neon-bg{position:fixed; inset:0; pointer-events:none; mix-blend-mode:screen; opacity:0.06}
   .blob{position:absolute; width:420px;height:420px;border-radius:50%;filter:blur(72px); transform:translate(-50%,-50%); animation:move 12s linear infinite alternate}
   .b1{left:12%; top:18%; background:linear-gradient(90deg,var(--neon-c1),var(--neon-c2))}
   .b2{left:86%; top:78%; width:520px;height:520px;background:linear-gradient(90deg,var(--neon-c2),var(--neon-c1)); animation-duration:14s}
   @keyframes move{from{transform:translate(-50%,-50%) scale(.9)} to{transform:translate(-50%,-50%) scale(1.08)}}
 
+  /* profile card */
   .profile-card{display:inline-block;margin-top:24px;border-radius:16px; overflow:hidden;padding:6px;background:linear-gradient(90deg, rgba(155,0,255,0.16), rgba(0,255,153,0.12)); box-shadow:0 30px 80px rgba(0,0,0,0.6);}
   .profile-card img{display:block;height:320px;width:auto; max-width:92vw; border-radius:10px; transition:transform .45s ease, box-shadow .45s ease}
   .profile-card:hover img{transform:scale(1.03); box-shadow:0 30px 60px rgba(0,255,153,0.06)}
 
-  #gallery{display:flex; flex-wrap:wrap; justify-content:center; gap:16px; margin-top:24px;}
-  #gallery img{width:250px; border-radius:12px; transition: transform 0.4s ease, box-shadow 0.4s ease; cursor:pointer;}
-  #gallery img:hover{transform: scale(1.05); box-shadow: 0 0 20px var(--neon-c1), 0 0 40px var(--neon-c2);}
-
   footer{padding:24px;text-align:center;color:rgba(159,255,0,0.6); border-top:1px solid rgba(0,255,153,0.04)}
 
-  @media (max-width:640px){ header{padding:12px} .logo{font-size:22px} }
+  /* music button */
+  .music-btn{position:fixed; bottom:28px; right:28px; width:52px;height:52px; border-radius:50%; background:linear-gradient(90deg,var(--neon-c1),var(--neon-c2)); color:#000; display:flex; justify-content:center; align-items:center; font-weight:700; cursor:pointer; box-shadow:0 8px 40px rgba(0,255,153,0.06); transition:.25s; z-index:99;}
+  .music-btn:hover{transform:translateY(-6px); box-shadow:0 18px 60px rgba(155,0,255,0.12)}
+
 </style>
 </head>
 <body class="page">
@@ -67,51 +72,53 @@
 
   <nav>
     <a href="index.html" class="nav-active">Home</a>
-    <a href="gallery.html">Gallery</a>
+    <a href="https://p1768396-prog.github.io/gallery.html">Gallery</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
-    <button id="music-btn" style="margin-left:16px; padding:6px 10px; border:none; border-radius:6px; background:linear-gradient(90deg,var(--neon-c2),var(--neon-c1)); color:#000; font-weight:600; cursor:pointer;">🎵</button>
   </nav>
 </header>
 
 <main class="hero">
   <div class="title">SANTOSH KUMAR BHERA documentary</div>
-  <div class="subtitle">The fattest website of all time -100000 social credit — welcome to BALLU.</div>
+  <div class="subtitle">the fattest website of all time -100000 social credit — welcome to BALLU.</div>
 
-  <a class="cta" href="https://p1768396-prog.github.io/gallery.html" target="_blank">CLICK TO CHECK OUT HOT PHOTOS</a>
+  <a class="cta" href="https://p1768396-prog.github.io/gallery.html">CLICK TO CHECK OUT HOT PHOTOS</a>
 
-  <div id="gallery">
-    <img src="0bf405e9-c7f2-4106-9940-b9102bfa60ad.png" alt="Photo 1">
-    <img src="1.png" alt="Photo 2">
-    <img src="2.png" alt="Photo 3">
-    <img src="3.png" alt="Photo 4">
+  <div class="profile-card" role="img" aria-label="Profile image">
+    <img src="0bf405e9-c7f2-4106-9940-b9102bfa60ad.png" alt="profile photo">
   </div>
 </main>
 
 <footer>
-  Made with fatness and pure fatty acids . © 2025
+  Made with fatness and pure fatty acids. © <span id="y"></span>
 </footer>
 
-<audio id="bg-music" loop>
+<!-- Music -->
+<audio id="bgMusic" loop>
   <source src="https://drive.google.com/uc?export=download&id=1UEj27ksMCKoeGVWvpmOj91Cln4ACZ5rd" type="audio/mpeg">
 </audio>
+<div class="music-btn" id="musicBtn">▶</div>
 
 <script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  const music = document.getElementById('bgMusic');
+  const btn = document.getElementById('musicBtn');
+  let playing = false;
+  music.volume = 0.2; // low volume
+  btn.addEventListener('click', ()=>{
+    if(!playing){ music.play(); btn.textContent='⏸'; playing=true; }
+    else{ music.pause(); btn.textContent='▶'; playing=false; }
+  });
+
+  // small entrance animation for hero elements
   document.addEventListener('DOMContentLoaded', ()=> {
     const hero = document.querySelector('.hero');
     hero.style.opacity = 0;
     setTimeout(()=> hero.style.transition = 'opacity .6s ease', 10);
     setTimeout(()=> hero.style.opacity = 1, 40);
-
-    const musicBtn = document.getElementById('music-btn');
-    const music = document.getElementById('bg-music');
-    music.volume = 0.2; // increase volume slightly
-    let isPlaying = false;
-    musicBtn.addEventListener('click', ()=>{
-      if(!isPlaying){ music.play(); isPlaying = true; musicBtn.textContent = '⏸️'; }
-      else { music.pause(); isPlaying = false; musicBtn.textContent = '🎵'; }
-    });
   });
 </script>
+
 </body>
 </html>

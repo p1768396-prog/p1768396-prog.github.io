@@ -5,45 +5,90 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>BALLU — About</title>
 <style>
-  :root{--neon1:#00ff99; --neon2:#9b00ff; --bg:#000}
+  :root{
+    --neon-c1:#00ff99;
+    --neon-c2:#9b00ff;
+    --bg:#000;
+    --muted:#9ff;
+  }
   *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--neon1);font-family:Inter,Arial,monospace}
-  header{display:flex;justify-content:space-between;align-items:center;padding:16px 22px;border-bottom:1px solid rgba(0,255,153,0.05)}
-  nav a{color:var(--neon1);margin:0 8px;text-decoration:none;font-weight:700}
-  main{padding:36px; display:flex; gap:28px; align-items:center; justify-content:center; flex-wrap:wrap}
-  .card{background:linear-gradient(180deg, rgba(155,0,255,0.03), rgba(0,255,153,0.02)); padding:24px; border-radius:14px; width:760px; max-width:92vw; border:1px solid rgba(0,255,153,0.04); box-shadow:0 30px 80px rgba(0,0,0,0.6)}
-  .profile{width:220px; height:220px; border-radius:14px; overflow:hidden; border:6px solid rgba(0,255,153,0.06); animation:pulse 2.2s ease-in-out infinite}
-  .profile img{width:100%; height:100%; object-fit:cover; display:block}
+  body{margin:0;background:var(--bg);color:var(--neon-c1);font-family:Inter,Arial,monospace}
+  
+  header{display:flex;justify-content:space-between;align-items:center;padding:18px 28px;border-bottom:1px solid rgba(0,255,153,0.06)}
+  .brand{display:flex; align-items:center; gap:14px}
+  .logo{width:58px;height:58px;border-radius:12px;background:linear-gradient(135deg,var(--neon-c2),var(--neon-c1));display:flex;align-items:center;justify-content:center;color:#000;font-weight:700;box-shadow:0 0 30px rgba(155,0,255,0.12)}
+  nav{display:flex; gap:14px; align-items:center}
+  nav a{padding:8px 12px;border-radius:8px; transition:all .25s; font-weight:600; text-decoration:none; color:var(--neon-c1);}
+  nav a:hover{transform:translateY(-4px); box-shadow:0 8px 30px rgba(0,255,153,0.06); color:var(--neon-c2); text-shadow:0 0 12px var(--neon-c2)}
+  nav a.active{outline:2px solid rgba(0,255,153,0.06)}
+
+  main{padding:48px 20px; display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center}
+
+  .profile-card{width:300px;height:300px; border-radius:16px; overflow:hidden; border:6px solid rgba(0,255,153,0.06); box-shadow:0 30px 80px rgba(0,0,0,0.6);}
+  .profile-card img{width:100%; height:100%; object-fit:cover; display:block; animation:pulse 2.2s ease-in-out infinite;}
   @keyframes pulse{0%{box-shadow:0 0 0 rgba(0,255,153,0.02)}50%{box-shadow:0 0 60px rgba(155,0,255,0.06)}100%{box-shadow:0 0 0 rgba(0,255,153,0.02)}}
-  h1{margin:0 0 12px 0}
-  p{color:rgba(159,255,200,0.9); line-height:1.5}
-  .accent{color:var(--neon2); font-weight:800}
+
+  .content{max-width:760px; color:var(--muted); line-height:1.6; font-size:16px;}
+  .content strong{color:var(--neon-c2);}
+  
+  footer{padding:24px;text-align:center;color:rgba(159,255,0,0.6); border-top:1px solid rgba(0,255,153,0.04)}
+
+  .music-btn{position:fixed; bottom:22px; right:22px; width:60px;height:60px; border-radius:50%; background:linear-gradient(90deg,var(--neon-c2),var(--neon-c1)); display:flex;align-items:center;justify-content:center; font-weight:700; cursor:pointer; box-shadow:0 8px 30px rgba(0,255,153,0.06); transition:all .25s}
+  .music-btn:hover{transform:translateY(-4px) scale(1.05); box-shadow:0 18px 60px rgba(155,0,255,0.12);}
 </style>
 </head>
 <body>
 
 <header>
-  <div style="font-weight:800">BALLU — About</div>
+  <div class="brand">
+    <div class="logo">BALLU</div>
+  </div>
   <nav>
     <a href="index.html">Home</a>
     <a href="gallery.html">Gallery</a>
-    <a href="about.html" style="outline:2px solid rgba(155,0,255,0.05); padding:6px;border-radius:8px">About</a>
+    <a href="about.html" class="active">About</a>
     <a href="contact.html">Contact</a>
   </nav>
 </header>
 
 <main>
-  <div class="profile" aria-hidden="false">
-    <img src="cd73f0b8-91e0-4747-a883-a3c8f6ce55d5.png" alt="profile">
+  <div class="profile-card">
+    <img src="0bf405e9-c7f2-4106-9940-b9102bfa60ad.png" alt="profile">
   </div>
 
-  <div class="card">
-    <h1>About BALLU <span class="accent">🤡</span></h1>
-    <p><strong>I'M GAY and I really really really really LOVEEE SANTOSHHHHHHHH</strong></p>
-    <p>This small corner of the web is for laughs and good vibes. Upload photos, share jokes, and keep the energy fun and respectful.</p>
-    <p style="margin-top:14px; color:rgba(180,255,200,0.8)">Want edits, filters, or animated stickers on your images? Tell me and I’ll prepare them.</p>
+  <div class="content">
+    <p><strong>This website is for fat lovers and Santosh fangirls</strong>, send me photos and I'll upload them here for you, # LOVE SANTOSH BHERA</p>
+    <p>Want to upload your masterpiece photos here? Contact me through the Contact page or DM me on Instagram <strong>pratya._.ksh</strong></p>
   </div>
 </main>
+
+<footer>
+  Made with fatness and pure fatty acids. © <span id="y"></span>
+</footer>
+
+<!-- music button -->
+<div class="music-btn" id="musicBtn">▶</div>
+<audio id="bgMusic" loop src="Gangsta Rap - Nigga Nigga Nigga.mp3"></audio>
+
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+  
+  const music = document.getElementById('bgMusic');
+  const btn = document.getElementById('musicBtn');
+  let playing = false;
+  
+  btn.addEventListener('click', ()=>{
+    if(!playing){
+      music.play();
+      btn.textContent = "⏸";
+      playing = true;
+    } else {
+      music.pause();
+      btn.textContent = "▶";
+      playing = false;
+    }
+  });
+</script>
 
 </body>
 </html>

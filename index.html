@@ -16,26 +16,11 @@
   a{color:var(--neon-c1); text-decoration:none}
   .page{animation:fadeIn .7s ease both}
   @keyframes fadeIn{from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none}}
-  
+
   header{display:flex; justify-content:space-between; align-items:center; padding:18px 28px; border-bottom:1px solid rgba(0,255,153,0.06)}
   .brand{display:flex; align-items:center; gap:14px}
-  
-  /* Neon animated logo */
-  .logo{
-    width:120px;
-    height:58px;
-    border-radius:12px;
-    background:linear-gradient(135deg,var(--neon-c2),var(--neon-c1));
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#000;
-    font-weight:700;
-    font-size:22px;
-    box-shadow:0 0 30px rgba(155,0,255,0.12);
-    animation:logoGlow 2s ease-in-out infinite alternate;
-  }
-  @keyframes logoGlow{from{box-shadow:0 0 20px rgba(0,255,153,0.2)} to{box-shadow:0 0 60px rgba(155,0,255,0.4)}}
+  .logo{font-size:28px; font-weight:800; background:linear-gradient(135deg,var(--neon-c2),var(--neon-c1)); -webkit-background-clip:text; color:transparent; text-shadow:0 0 10px var(--neon-c1), 0 0 20px var(--neon-c2); animation:logoGlow 1.8s ease-in-out infinite alternate; cursor:pointer;}
+  @keyframes logoGlow{from{text-shadow:0 0 10px var(--neon-c1),0 0 20px var(--neon-c2)} to{text-shadow:0 0 20px var(--neon-c1),0 0 40px var(--neon-c2)}}
 
   nav{display:flex; gap:14px; align-items:center}
   nav a{padding:8px 12px;border-radius:8px; transition:all .25s; font-weight:600}
@@ -59,15 +44,13 @@
   .profile-card img{display:block;height:320px;width:auto; max-width:92vw; border-radius:10px; transition:transform .45s ease, box-shadow .45s ease}
   .profile-card:hover img{transform:scale(1.03); box-shadow:0 30px 60px rgba(0,255,153,0.06)}
 
+  #gallery{display:flex; flex-wrap:wrap; justify-content:center; gap:16px; margin-top:24px;}
+  #gallery img{width:250px; border-radius:12px; transition: transform 0.4s ease, box-shadow 0.4s ease; cursor:pointer;}
+  #gallery img:hover{transform: scale(1.05); box-shadow: 0 0 20px var(--neon-c1), 0 0 40px var(--neon-c2);}
+
   footer{padding:24px;text-align:center;color:rgba(159,255,0,0.6); border-top:1px solid rgba(0,255,153,0.04)}
 
-  .nav-active{outline:2px solid rgba(255,0,255,0.06); box-shadow:0 8px 40px rgba(0,255,153,0.03)}
-
-  /* music control button */
-  .music-btn{position:fixed; bottom:20px; right:20px; width:50px; height:50px; border-radius:50%; background:linear-gradient(90deg,var(--neon-c1),var(--neon-c2)); display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 0 20px rgba(0,255,153,0.3); transition:all 0.3s}
-  .music-btn:hover{transform:scale(1.1); box-shadow:0 0 40px rgba(155,0,255,0.4)}
-
-  @media (max-width:640px){ header{padding:12px} .logo{width:100px;height:44px} }
+  @media (max-width:640px){ header{padding:12px} .logo{font-size:22px} }
 </style>
 </head>
 <body class="page">
@@ -80,10 +63,6 @@
 <header>
   <div class="brand">
     <div class="logo">BALLU</div>
-    <div>
-      <div style="font-weight:700">BALLU</div>
-      <div style="font-size:12px;color:rgba(160,255,200,0.6)">Neon Gallery</div>
-    </div>
   </div>
 
   <nav>
@@ -91,58 +70,48 @@
     <a href="gallery.html">Gallery</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
+    <button id="music-btn" style="margin-left:16px; padding:6px 10px; border:none; border-radius:6px; background:linear-gradient(90deg,var(--neon-c2),var(--neon-c1)); color:#000; font-weight:600; cursor:pointer;">🎵</button>
   </nav>
 </header>
 
 <main class="hero">
   <div class="title">SANTOSH KUMAR BHERA documentary</div>
-  <div class="subtitle">The fattest website of all time — 100000 social credit — welcome to BALLU.</div>
+  <div class="subtitle">The fattest website of all time -100000 social credit — welcome to BALLU.</div>
 
-  <a class="cta" href="#gallery">CLICK TO CHECK OUT HOT PHOTOS</a>
+  <a class="cta" href="https://p1768396-prog.github.io/gallery.html" target="_blank">CLICK TO CHECK OUT HOT PHOTOS</a>
 
-  <div class="profile-card" role="img" aria-label="Profile image">
-    <img src="0bf405e9-c7f2-4106-9940-b9102bfa60ad.png" alt="profile photo">
-  </div>
-
-  <!-- Multiple photos -->
-  <div id="gallery" style="margin-top:24px; display:flex; gap:14px; flex-wrap:wrap; justify-content:center;">
-    <img src="photo1.png" style="width:220px; border-radius:12px;">
-    <img src="photo2.png" style="width:220px; border-radius:12px;">
-    <img src="photo3.png" style="width:220px; border-radius:12px;">
+  <div id="gallery">
+    <img src="0bf405e9-c7f2-4106-9940-b9102bfa60ad.png" alt="Photo 1">
+    <img src="1.png" alt="Photo 2">
+    <img src="2.png" alt="Photo 3">
+    <img src="3.png" alt="Photo 4">
   </div>
 </main>
 
 <footer>
-  Made with fatness and pure fatty acids. © 2025
+  Made with fatness and pure fatty acids . © 2025
 </footer>
 
-<!-- Music button -->
-<div class="music-btn" id="music-btn">🎵</div>
 <audio id="bg-music" loop>
-  <source src="your-music.mp3" type="audio/mpeg">
+  <source src="https://drive.google.com/uc?export=download&id=1UEj27ksMCKoeGVWvpmOj91Cln4ACZ5rd" type="audio/mpeg">
 </audio>
 
 <script>
-const music = document.getElementById('bg-music');
-const btn = document.getElementById('music-btn');
-music.volume = 0.3;
+  document.addEventListener('DOMContentLoaded', ()=> {
+    const hero = document.querySelector('.hero');
+    hero.style.opacity = 0;
+    setTimeout(()=> hero.style.transition = 'opacity .6s ease', 10);
+    setTimeout(()=> hero.style.opacity = 1, 40);
 
-btn.addEventListener('click', () => {
-  if(music.paused){ 
-    music.play(); 
-    btn.textContent='⏸️'; 
-  } else { 
-    music.pause(); 
-    btn.textContent='🎵'; 
-  }
-});
-
-document.addEventListener('DOMContentLoaded', ()=> {
-  const hero = document.querySelector('.hero');
-  hero.style.opacity = 0;
-  setTimeout(()=> hero.style.transition = 'opacity .6s ease', 10);
-  setTimeout(()=> hero.style.opacity = 1, 40);
-});
+    const musicBtn = document.getElementById('music-btn');
+    const music = document.getElementById('bg-music');
+    music.volume = 0.2; // increase volume slightly
+    let isPlaying = false;
+    musicBtn.addEventListener('click', ()=>{
+      if(!isPlaying){ music.play(); isPlaying = true; musicBtn.textContent = '⏸️'; }
+      else { music.pause(); isPlaying = false; musicBtn.textContent = '🎵'; }
+    });
+  });
 </script>
 </body>
 </html>

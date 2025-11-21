@@ -16,31 +16,58 @@
   a{color:var(--neon-c1); text-decoration:none}
   .page{animation:fadeIn .7s ease both}
   @keyframes fadeIn{from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none}}
+  
   header{display:flex; justify-content:space-between; align-items:center; padding:18px 28px; border-bottom:1px solid rgba(0,255,153,0.06)}
   .brand{display:flex; align-items:center; gap:14px}
-  .logo{width:120px;height:58px;border-radius:12px; background:linear-gradient(135deg,var(--neon-c2),var(--neon-c1)); display:flex;align-items:center;justify-content:center;color:#000;font-weight:700; box-shadow:0 0 30px rgba(155,0,255,0.12); animation:logoGlow 2s ease-in-out infinite alternate;}
+  
+  /* Neon animated logo */
+  .logo{
+    width:120px;
+    height:58px;
+    border-radius:12px;
+    background:linear-gradient(135deg,var(--neon-c2),var(--neon-c1));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#000;
+    font-weight:700;
+    font-size:22px;
+    box-shadow:0 0 30px rgba(155,0,255,0.12);
+    animation:logoGlow 2s ease-in-out infinite alternate;
+  }
   @keyframes logoGlow{from{box-shadow:0 0 20px rgba(0,255,153,0.2)} to{box-shadow:0 0 60px rgba(155,0,255,0.4)}}
+
   nav{display:flex; gap:14px; align-items:center}
   nav a{padding:8px 12px;border-radius:8px; transition:all .25s; font-weight:600}
   nav a:hover{transform:translateY(-4px); box-shadow:0 8px 30px rgba(0,255,153,0.06); color:var(--neon-c2); text-shadow:0 0 12px var(--neon-c2)}
+
   .hero{padding:48px 20px; text-align:center}
   .title{font-size:clamp(28px,6vw,48px); line-height:1.02; margin:6px 0; font-weight:800; letter-spacing:0.6px; background:linear-gradient(90deg,var(--neon-c1),var(--neon-c2)); -webkit-background-clip:text;color:transparent; animation:textGlow 1.8s ease-in-out infinite alternate;}
   @keyframes textGlow{from{text-shadow:0 0 6px rgba(0,255,153,0.12)} to{text-shadow:0 0 30px rgba(155,0,255,0.15)}}
   .subtitle{color:var(--muted); font-size:18px; margin-bottom:18px}
+
   .cta{display:inline-block;padding:12px 18px;border-radius:12px;background:linear-gradient(90deg,var(--neon-c2),var(--neon-c1)); color:#000;font-weight:700; box-shadow:0 8px 40px rgba(0,255,153,0.06); transform:translateY(0); transition:transform .18s, box-shadow .18s}
   .cta:hover{transform:translateY(-6px); box-shadow:0 18px 60px rgba(155,0,255,0.12)}
+
   .neon-bg{position:fixed; inset:0; pointer-events:none; mix-blend-mode:screen; opacity:0.06}
   .blob{position:absolute; width:420px;height:420px;border-radius:50%;filter:blur(72px); transform:translate(-50%,-50%); animation:move 12s linear infinite alternate}
   .b1{left:12%; top:18%; background:linear-gradient(90deg,var(--neon-c1),var(--neon-c2))}
   .b2{left:86%; top:78%; width:520px;height:520px;background:linear-gradient(90deg,var(--neon-c2),var(--neon-c1)); animation-duration:14s}
   @keyframes move{from{transform:translate(-50%,-50%) scale(.9)} to{transform:translate(-50%,-50%) scale(1.08)}}
+
   .profile-card{display:inline-block;margin-top:24px;border-radius:16px; overflow:hidden;padding:6px;background:linear-gradient(90deg, rgba(155,0,255,0.16), rgba(0,255,153,0.12)); box-shadow:0 30px 80px rgba(0,0,0,0.6);}
   .profile-card img{display:block;height:320px;width:auto; max-width:92vw; border-radius:10px; transition:transform .45s ease, box-shadow .45s ease}
   .profile-card:hover img{transform:scale(1.03); box-shadow:0 30px 60px rgba(0,255,153,0.06)}
+
   footer{padding:24px;text-align:center;color:rgba(159,255,0,0.6); border-top:1px solid rgba(0,255,153,0.04)}
+
   .nav-active{outline:2px solid rgba(255,0,255,0.06); box-shadow:0 8px 40px rgba(0,255,153,0.03)}
+
+  /* music control button */
   .music-btn{position:fixed; bottom:20px; right:20px; width:50px; height:50px; border-radius:50%; background:linear-gradient(90deg,var(--neon-c1),var(--neon-c2)); display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 0 20px rgba(0,255,153,0.3); transition:all 0.3s}
   .music-btn:hover{transform:scale(1.1); box-shadow:0 0 40px rgba(155,0,255,0.4)}
+
+  @media (max-width:640px){ header{padding:12px} .logo{width:100px;height:44px} }
 </style>
 </head>
 <body class="page">
@@ -96,14 +123,20 @@
 </audio>
 
 <script>
-document.getElementById('y').textContent = new Date().getFullYear();
 const music = document.getElementById('bg-music');
 const btn = document.getElementById('music-btn');
 music.volume = 0.3;
+
 btn.addEventListener('click', () => {
-  if(music.paused){ music.play(); btn.textContent='⏸️'; }
-  else{ music.pause(); btn.textContent='🎵'; }
+  if(music.paused){ 
+    music.play(); 
+    btn.textContent='⏸️'; 
+  } else { 
+    music.pause(); 
+    btn.textContent='🎵'; 
+  }
 });
+
 document.addEventListener('DOMContentLoaded', ()=> {
   const hero = document.querySelector('.hero');
   hero.style.opacity = 0;

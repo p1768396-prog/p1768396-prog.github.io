@@ -9,36 +9,56 @@
     --neon-c1: #00ff99;
     --neon-c2: #9b00ff;
     --bg: #000;
+    --muted: #9ff;
   }
-  body{margin:0; background:var(--bg); color:var(--neon-c1); font-family:Inter,Arial,monospace}
-  header{display:flex; justify-content:space-between; align-items:center; padding:16px 22px; border-bottom:1px solid rgba(0,255,153,0.05)}
-  nav a{color:var(--neon-c1); margin:0 8px; text-decoration:none; font-weight:700; transition:.22s}
-  nav a:hover{color:var(--neon-c2); transform:translateY(-4px);}
-  main{padding:36px; text-align:center}
-  .box{display:inline-block; padding:20px 26px; border-radius:14px; border:1px solid rgba(0,255,153,0.04); box-shadow:0 30px 60px rgba(0,0,0,0.6); background:linear-gradient(180deg, rgba(155,0,255,0.02), rgba(0,255,153,0.01))}
-  .btn{display:inline-block; margin-top:14px; padding:12px 20px; border-radius:12px; background:linear-gradient(90deg,var(--neon2),var(--neon1)); color:#000; font-weight:800; text-decoration:none; transition:transform .18s}
-  .btn:hover{transform:translateY(-6px) scale(1.02)}
-  #musicBtn{padding:8px 12px; border-radius:8px; background:linear-gradient(90deg,var(--neon2),var(--neon1)); color:#000; font-weight:700; cursor:pointer; margin-left:12px; transition: all 0.25s}
-  #musicBtn:hover{transform:translateY(-4px); box-shadow:0 8px 30px rgba(0,255,153,0.12);}
+  *{box-sizing:border-box}
+  html,body{height:100%; margin:0; background:var(--bg); color:var(--neon-c1); font-family:Inter,Arial,monospace}
+  a{color:var(--neon-c1); text-decoration:none}
+  /* page fade */
+  .page{animation:fadeIn .7s ease both}
+  @keyframes fadeIn{from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:none}}
+
+  header{display:flex; justify-content:space-between; align-items:center; padding:18px 28px; border-bottom:1px solid rgba(0,255,153,0.06)}
+  .brand{display:flex; align-items:center; gap:14px}
+  .logo{width:58px;height:58px;border-radius:12px; background:linear-gradient(135deg,var(--neon-c2),var(--neon-c1)); display:flex;align-items:center;justify-content:center;color:#000;font-weight:700; box-shadow:0 0 30px rgba(155,0,255,0.12)}
+  nav{display:flex; gap:14px; align-items:center}
+  nav a{padding:8px 12px;border-radius:8px; transition:all .25s; font-weight:600}
+  nav a:hover{transform:translateY(-4px); box-shadow:0 8px 30px rgba(0,255,153,0.06); color:var(--neon-c2); text-shadow:0 0 12px var(--neon-c2)}
+
+  /* hero/contact box */
+  main{padding:48px 20px; text-align:center}
+  .box{display:inline-block;padding:26px 32px;border-radius:16px; overflow:hidden;background:linear-gradient(180deg, rgba(155,0,255,0.02), rgba(0,255,153,0.01)); border:1px solid rgba(0,255,153,0.04); box-shadow:0 30px 80px rgba(0,0,0,0.6)}
+  .btn{display:inline-block;margin-top:14px;padding:12px 20px;border-radius:12px;background:linear-gradient(90deg,var(--neon-c2),var(--neon-c1)); color:#000; font-weight:700; text-decoration:none; transition:all .25s}
+  .btn:hover{transform:translateY(-6px)}
   .pulse-note{margin-top:12px;color:rgba(200,255,200,0.9)}
+
+  /* neon music button */
+  #musicBtn{margin-left:12px; padding:8px 12px; border-radius:8px; background:linear-gradient(90deg,var(--neon-c2),var(--neon-c1)); color:#000; font-weight:700; cursor:pointer; transition: all 0.25s;}
+  #musicBtn:hover{transform:translateY(-4px); box-shadow:0 8px 30px rgba(0,255,153,0.12);}
 </style>
 </head>
-<body>
+<body class="page">
 
 <header>
-  <div style="font-weight:800">BALLU — Contact</div>
+  <div class="brand">
+    <div class="logo">B</div>
+    <div>
+      <div style="font-weight:700">BALLU</div>
+      <div style="font-size:12px;color:rgba(160,255,200,0.6)">Contact Page</div>
+    </div>
+  </div>
+
   <nav>
     <a href="index.html">Home</a>
     <a href="gallery.html">Gallery</a>
     <a href="about.html">About</a>
-    <a href="contact.html" style="outline:2px solid rgba(0,255,153,0.04); padding:6px;border-radius:8px">Contact</a>
+    <a href="contact.html" class="nav-active">Contact</a>
     <button id="musicBtn">🔊 Music</button>
   </nav>
 </header>
 
 <audio id="bgMusic" loop>
   <source src="res/Gangsta Rap - Nigga Nigga Nigga.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
 </audio>
 
 <main>
@@ -68,6 +88,5 @@
     }
   });
 </script>
-
 </body>
 </html>

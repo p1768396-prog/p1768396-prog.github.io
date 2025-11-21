@@ -5,13 +5,27 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>BALLU — Contact</title>
 <style>
-  :root{--neon1:#00ff99; --neon2:#9b00ff; --bg:#000}
-  body{margin:0;background:var(--bg);color:var(--neon1);font-family:Inter,Arial,monospace}
-  header{display:flex;justify-content:space-between;padding:16px 22px;border-bottom:1px solid rgba(0,255,153,0.05)}
-  nav a{color:var(--neon1);margin:0 8px;text-decoration:none}
+  :root{
+    --neon-c1:#00ff99;
+    --neon-c2:#9b00ff;
+    --bg:#000;
+    --muted:#9ff;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--neon-c1);font-family:Inter,Arial,monospace}
+  a{color:var(--neon-c1); text-decoration:none}
+  header{display:flex; justify-content:space-between; align-items:center; padding:18px 28px; border-bottom:1px solid rgba(0,255,153,0.06)}
+  .brand{display:flex; align-items:center; gap:14px}
+  .logo{width:58px;height:58px;border-radius:12px; background:linear-gradient(135deg,var(--neon-c2),var(--neon-c1)); display:flex;align-items:center;justify-content:center;color:#000;font-weight:700; box-shadow:0 0 30px rgba(155,0,255,0.12); animation:logoGlow 2s ease-in-out infinite alternate}
+  @keyframes logoGlow{from{box-shadow:0 0 20px var(--neon-c1),0 0 40px var(--neon-c2)} to{box-shadow:0 0 40px var(--neon-c2),0 0 60px var(--neon-c1)}}
+  nav{display:flex; gap:14px; align-items:center}
+  nav a{padding:8px 12px;border-radius:8px; transition:all .25s; font-weight:600}
+  nav a:hover{transform:translateY(-4px); box-shadow:0 8px 30px rgba(0,255,153,0.06); color:var(--neon-c2); text-shadow:0 0 12px var(--neon-c2)}
+  .music-btn{cursor:pointer; padding:6px 10px; border-radius:8px; background:linear-gradient(90deg,var(--neon-c2),var(--neon-c1)); color:#000; font-weight:700; border:none; transition:transform .2s}
+  .music-btn:hover{transform:translateY(-4px) scale(1.05); box-shadow:0 8px 30px rgba(0,255,153,0.06)}
   main{padding:36px;text-align:center}
   .box{display:inline-block;padding:20px 26px;border-radius:14px;border:1px solid rgba(0,255,153,0.04); box-shadow:0 30px 60px rgba(0,0,0,0.6); background:linear-gradient(180deg, rgba(155,0,255,0.02), rgba(0,255,153,0.01))}
-  .btn{display:inline-block;margin-top:14px;padding:12px 20px;border-radius:12px;background:linear-gradient(90deg,var(--neon2),var(--neon1)); color:#000; font-weight:800; text-decoration:none; transition:transform .18s}
+  .btn{display:inline-block;margin-top:14px;padding:12px 20px;border-radius:12px;background:linear-gradient(90deg,var(--neon-c2),var(--neon-c1)); color:#000; font-weight:800; text-decoration:none; transition:transform .18s}
   .btn:hover{transform:translateY(-6px) scale(1.02)}
   .pulse-note{margin-top:12px;color:rgba(200,255,200,0.9)}
 </style>
@@ -19,14 +33,23 @@
 <body>
 
 <header>
-  <div style="font-weight:800">BALLU — Contact</div>
+  <div class="brand">
+    <div class="logo">B</div>
+    <div style="font-weight:700">BALLU</div>
+  </div>
+
   <nav>
     <a href="index.html">Home</a>
     <a href="gallery.html">Gallery</a>
     <a href="about.html">About</a>
     <a href="contact.html" style="outline:2px solid rgba(0,255,153,0.04); padding:6px;border-radius:8px">Contact</a>
+    <button class="music-btn" id="musicBtn">Play Music</button>
   </nav>
 </header>
+
+<audio id="bgMusic" loop>
+  <source src="YOUR_MP3_FILE.mp3" type="audio/mpeg">
+</audio>
 
 <main>
   <div class="box">
@@ -36,6 +59,22 @@
     <div style="margin-top:12px;color:rgba(150,255,200,0.8);font-size:13px"> SEND ME GOOD PHOTOS </div>
   </div>
 </main>
+
+<script>
+  const music = document.getElementById('bgMusic');
+  const musicBtn = document.getElementById('musicBtn');
+  music.volume = 0.2; // low volume
+
+  musicBtn.addEventListener('click', ()=>{
+    if(music.paused){
+      music.play();
+      musicBtn.textContent = "Pause Music";
+    } else {
+      music.pause();
+      musicBtn.textContent = "Play Music";
+    }
+  });
+</script>
 
 </body>
 </html>
